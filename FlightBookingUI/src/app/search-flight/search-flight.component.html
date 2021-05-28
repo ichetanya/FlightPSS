@@ -1,0 +1,29 @@
+<div class="container margin-auto">
+    <div [formGroup]="searchFlightForm">
+        <div class="row">
+            <mat-form-field class="example-form-field">
+                <mat-label>Origin</mat-label>
+                <input matInput type="text" autocomplete="off" formControlName="origin">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="example-form-field">
+                <mat-label>Destination</mat-label>
+                <input matInput type="text" autocomplete="off" formControlName="destination">
+            </mat-form-field>    
+        </div>
+        <div class="row">
+            <div class="col">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date of departure</mat-label>
+                    <input matInput [matDatepicker]="picker" disabled formControlName="flightDate">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker  disabled="false"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <button mat-raised-button color="accent" (click)="searchFlights()" [disabled]="searchFlightForm.invalid">Proceed</button>
+            </div>
+        </div>
+    </div>
+</div>

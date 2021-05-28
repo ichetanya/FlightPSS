@@ -1,0 +1,35 @@
+.search-header{
+    height: 75px;
+    .search-heading{
+       font-size: 24px;
+    }
+}
+
+.flight-row {
+    border-top: cadetblue dashed 1px;
+    margin: 3px 0px;
+}
+
+.body{
+    .flight-row{
+        .origin-grid{
+            .origin-text{
+                font-size: 18px;
+            }
+            .origin-time{
+                font-size: 14px;
+            }
+        }
+        .duration{
+            font-size: 20px;
+        }
+        .destination-grid{
+            .destination-text{
+                font-size: 18px;
+            }
+            .destination-time{
+                font-size: 14px;
+            }
+        }
+    }
+}
