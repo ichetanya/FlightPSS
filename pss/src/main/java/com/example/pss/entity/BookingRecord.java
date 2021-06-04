@@ -6,6 +6,7 @@ import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -32,6 +33,7 @@ public class BookingRecord {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "passengerId")
 	private Passenger passenger;
+	private int travellers;
 
 	public int getBookingId() {
 		return bookingId;
@@ -121,9 +123,17 @@ public class BookingRecord {
 		this.passenger = passenger;
 	}
 
+	public int getTravellers() {
+		return travellers;
+	}
+
+	public void setTravellers(int travellers) {
+		this.travellers = travellers;
+	}
+
 	public BookingRecord(String origin, String destination, LocalDateTime bookingDate, double fare,
 			LocalDate flightDate, LocalTime flightTime, String status, String flightNumber, FlightInfo flightInfo,
-			Passenger passenger) {
+			Passenger passenger, int travellers) {
 		super();
 		this.origin = origin;
 		this.destination = destination;
@@ -135,11 +145,11 @@ public class BookingRecord {
 		this.flightNumber = flightNumber;
 		this.flightInfo = flightInfo;
 		this.passenger = passenger;
+		this.travellers = travellers;
 	}
 	
 	public BookingRecord() {
 		
 	}
-	
 
 }

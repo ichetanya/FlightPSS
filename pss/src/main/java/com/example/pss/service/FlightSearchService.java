@@ -9,7 +9,9 @@ public interface FlightSearchService {
 	
 	List<Flight> listFlightsByOriginDestinationAndDate(String origin, String destination, LocalDate flightDate);
 	
-	Flight findFlightByFlightNumberOriginDestinationAndDate(String FlightNumber,String origin, String destination, LocalDate flightDate);
+	Flight findFlightByFlightNumberOriginDestinationAndDate(String FlightNumber,String origin, String destination, LocalDate flightDate,int travellers);
 	
+	List<Flight> listFlightsByOriginDestinationDateAndTravellers(String origin, String destination, LocalDate flightDate, int travellers);
 	
+	Flight findByFlightInfo(int id);
 }

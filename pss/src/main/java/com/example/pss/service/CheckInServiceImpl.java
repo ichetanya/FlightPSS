@@ -1,14 +1,17 @@
 package com.example.pss.service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.pss.dao.BookingRepository;
 import com.example.pss.dao.CheckInRepository;
 import com.example.pss.entity.BookingRecord;
 import com.example.pss.entity.CheckIn;
-import com.example.pss.model.CheckInModel;
 
 @Service
 public class CheckInServiceImpl implements CheckInService {
@@ -18,14 +21,35 @@ public class CheckInServiceImpl implements CheckInService {
 	
 	@Autowired
 	private CheckInRepository checkindao;
+	
+	@Autowired
+	private BookingRepository bookingdao;
+	
 
 	@Override
-	public CheckIn checkIn(CheckInModel checkInModel) {
-		BookingRecord br = bookingService.changeStatus(checkInModel.getBookingId(), "CHECKED IN");
+	public ResponseEntity<Object> checkIn(int bookingId) {
+		if(checkindao.existsBybookingRecord_bookingId(bookingId)) {
+//			return new ResponseEntity<Object>("ALREADY CHECKED IN",HttpStatus.OK);
+			 return ResponseEntity.status(HttpStatus.CREATED).body(
+			            Collections.singletonMap("message", "ALREADY CHECKED IN"));
+		}
+		BookingRecord br = bookingdao.findByBookingId(bookingId);
+		if(br == null) {
+			return  ResponseEntity.status(HttpStatus.CREATED).body(
+		            Collections.singletonMap("message","NO BOOKING EXIST"));
+		}
+		br.setStatus("CHECKED IN");
 		CheckIn checkIn = new CheckIn();
 		checkIn.setSeatNumber("A5");
 		checkIn.setCheckinTime(LocalDateTime.now());
-		return checkIn;
+		checkIn.setBookingRecord(br);
+		checkindao.save(checkIn);
+		return new ResponseEntity<Object>(checkIn,HttpStatus.OK);
+	}
+
+	@Override
+	public BookingRecord getBookingStatus(int id) {
+		return bookingService.getBookingRecord(id);
 	}
 
 }

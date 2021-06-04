@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="checkin-box">
+        <div class="checkin-header">
+            {{checkinHeading}}
+        </div>
+        <div class="checkin-form" [formGroup]="checkinForm" *ngIf="!isCheckedIn" >
+            <div class="row">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Enter the booking ID :</mat-label>
+                    <input matInput type="text" autocomplete="off" formControlName="bookingId">
+                </mat-form-field>  
+            </div>
+            <div>
+                <button mat-raised-button color="accent" [disabled]="checkinForm.invalid" (click)="checkIn()">Check In</button>
+            </div>
+        </div>
+        <div class="checked-in" *ngIf="isCheckedIn">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Check-in ID</th>
+                    <th scope="col">Check-in Time</th>
+                    <th scope="col">AirlineName</th>
+                    <th scope="col">Flight no.</th>
+                    <th scope="col">Seat number</th>
+                    <th scope="col">Booking Id</th>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Flight Date</th>
+                    <th scope="col">Flight Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">{{checkinDetails.checkinId}}</th>
+                    <td>{{checkinDetails.checkinTime}}</td>
+                    <td>{{checkinDetails.bookingRecord.flightInfo.airlineInfo.airlineName}}</td>
+                    <td>{{checkinDetails.bookingRecord.flightInfo.flightNumber}}</td>
+                    <td>{{checkinDetails.seatNumber}}</td>
+                    <td>{{checkinDetails.bookingRecord.bookingId}}</td>
+                    <td>{{checkinDetails.bookingRecord.origin}}</td>
+                    <td>{{checkinDetails.bookingRecord.destination}}</td>
+                    <td>{{checkinDetails.bookingRecord.flightDate}}</td>
+                    <td>{{checkinDetails.bookingRecord.flightTime}}</td>
+                  </tr>
+                </tbody>
+              </table>       
+        </div>
+        <div *ngIf="isAlreadyCheckedIn" class="already-checkin">
+          {{errorMessage}}
+        </div>
+    </div>
+</div>

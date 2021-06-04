@@ -1,29 +1,52 @@
-<div class="container margin-auto">
-    <div [formGroup]="searchFlightForm">
+<div class="container search-box">
+    <div [formGroup]="searchFlightForm" class="search-form">
         <div class="row">
+          <div class="col-4">
+            <span class="field-label">
+                Origin :
+            </span>
             <mat-form-field class="example-form-field">
-                <mat-label>Origin</mat-label>
-                <input matInput type="text" autocomplete="off" formControlName="origin">
+                <input matInput type="text" autocomplete="off" placeholder="Enter the origin" formControlName="origin">
             </mat-form-field>
-        </div>
-        <div class="row">
+          </div>
+          <div class="col-4">
+            <span class="field-label" >
+                Destination : 
+            </span>
             <mat-form-field class="example-form-field">
-                <mat-label>Destination</mat-label>
-                <input matInput type="text" autocomplete="off" formControlName="destination">
-            </mat-form-field>    
+                <input matInput  placeholder="Enter the destination" type="text" autocomplete="off" formControlName="destination">
+            </mat-form-field>  
+          </div>
+          <div class="col-4">
+            <mat-form-field >
+              <mat-label>Date of departure</mat-label>
+              <input matInput [matDatepicker]="picker" disabled formControlName="flightDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker  disabled="false"></mat-datepicker>
+            </mat-form-field>
+          </div>
         </div>
         <div class="row">
-            <div class="col">
-                  <mat-form-field appearance="fill">
-                    <mat-label>Date of departure</mat-label>
-                    <input matInput [matDatepicker]="picker" disabled formControlName="flightDate">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker  disabled="false"></mat-datepicker>
-                </mat-form-field>
+            <div class="col-4">
+                <span class="field-label" >
+                    No of travellers : 
+                </span>
+                <mat-form-field class="no-of-travellers" >
+                    <!-- <mat-label>No of travellers</mat-label> -->
+                    <mat-select formControlName="travellers">
+                      <mat-option *ngFor="let number of numbers" [value]="number">
+                        {{number}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
             </div>
-            <div class="col">
-                <button mat-raised-button color="accent" (click)="searchFlights()" [disabled]="searchFlightForm.invalid">Proceed</button>
+            <div class="col-4">
+                <mat-form-field class="example-form-field">
+                    <mat-label>Flight Number (optional)</mat-label>
+                    <input matInput type="text" autocomplete="off" formControlName="flightNumber">
+                </mat-form-field>  
             </div>
         </div>
+        <button class="search-button" mat-raised-button color="primary" [disabled]="searchFlightForm.invalid" (click)="searchFlights()">Proceed</button>
     </div>
 </div>

@@ -1,25 +1,108 @@
 <div class="container">
     <div class="header row header-box">
-        <div class="col-1">
-            <button mat-icon-button color="primary" aria-label="Back" (click)="goBack()">
-                <mat-icon>keyboard_backspace</mat-icon>
-              </button>
-        </div>
-        <div class="col-11">
+        <button class="col-2" mat-icon-button color="primary" aria-label="Back" (click)="goBack()">
+            <mat-icon>keyboard_backspace</mat-icon>
+        </button>
+        <div class="col-10">
             <div class="row">
-                {{origin}} ----->{{destination}}
-            </div>
-            <div class="row">
-                Day, Time
+                <div class="col-2">
+                    {{origin}}
+                </div>
+                <div class="col-2">
+                    ----->   
+                </div>
+                <div class="col-2">
+                    {{destination}}
+                </div>
             </div>
         </div>
     </div>
-    <div class="body booking-contain">
-
-    </div>
-    <div class="footer booking-footer">
-        <div class="book-button">
-            <button mat-raised-button color="accent">Book</button>
+    <div class="booking-container">
+       <div [formGroup]="bookingForm" class="booking-form">
+        <div class="primary-passenger-container">
+            <div class="passenger-heading">
+                Primary Passenger
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span field-label>
+                        First Name : 
+                    </span>
+                    <mat-form-field class="example-form-field">
+                        <input matInput placeholder="Enter your first name" type="text" autocomplete="off" formControlName="firstName">
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <span>
+                        Last Name :
+                    </span>
+                    <mat-form-field class="example-form-field">
+                        <input matInput placeholder="Enter your last name" type="text" autocomplete="off" formControlName="lastName">
+                    </mat-form-field> 
+                </div>       
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span>
+                        Contact No. :
+                    </span>
+                    <mat-form-field class="example-form-field">
+                        <input placeholder="Enter your mobile number" matInput type="text" autocomplete="off" formControlName="mobileNumber">
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <span>
+                        Email Address :
+                    </span>
+                    <mat-form-field class="example-form-field">
+                        <input placeholder="Enter your email address" matInput type="text" autocomplete="off" formControlName="emailAddress">
+                    </mat-form-field>
+                </div>     
+            </div>
+            <div class="row gender-field">
+                <span>
+                    Gender : 
+                </span>
+                <mat-radio-group formControlName="gender">
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button  value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
         </div>
+        <div class="row copassengers-container" *ngIf="bookingForm.get('coPassengers')['controls'].length">
+            <div class="copassenger-heading">
+                Co Passengers
+            </div>
+            <div formArrayName="coPassengers" *ngFor="let passenger of bookingForm.get('coPassengers')['controls']; let i = index;" >
+                <div class="copassenger-label">
+                    Co Passenger {{i + 1}} 
+                </div>
+                <div class="row copassenger-field" [formGroupName]="i">
+                    <div class="col">
+                        <mat-form-field class="example-form-field" >
+                            <mat-label>First Name</mat-label>
+                            <input matInput type="text" autocomplete="off" formControlName="firstName">
+                        </mat-form-field>
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="example-form-field">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput type="text" autocomplete="off" formControlName="lastName">
+                        </mat-form-field>
+                    </div>
+                    <div class="col gender-field">
+                        <span>
+                            Gender : 
+                        </span>
+                        <mat-radio-group formControlName="gender">
+                            <mat-radio-button value="Male">Male</mat-radio-button>
+                            <mat-radio-button  value="Female">Female</mat-radio-button>
+                        </mat-radio-group>
+                    </div>       
+                </div>
+            </div>
+        </div>
+       </div>
+       <button class="book-button" mat-raised-button color="accent" [disabled]="bookingForm.invalid" (click)="book()">Book</button>
     </div>
 </div>

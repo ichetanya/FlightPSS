@@ -6,31 +6,37 @@
               </button>
         </div>
         <div class="col-11 search-heading">
-            Search Results
+            Results
         </div>
     </div>
     <div class="body">
+        <div class="no-flights" *ngIf="!dataSource.length">
+            No Flights Available
+        </div>
        <div class="row flight-row" *ngFor="let flight of dataSource">
-            <div class="col-1">
-                img
+            <div class="col-1 flight-logo">
+                <img src="../../assets/{{flight?.flightInfo?.airlineInfo?.airlineLogo}}" [alt]="flight?.flightInfo?.airlineInfo?.airlineName"
+                [matTooltip]="flight?.flightInfo?.airlineInfo?.airlineName">
             </div>
             <div class="col-3 origin-grid">
                 <div class="row origin-text">
-                    {{origin}}
+                    {{flight.origin}}
                 </div>
-                <div class="row origin-time">
-                    time
+                <div class="row time-date">
+                    <span class="time-date">
+                        {{flight.flightDate}}
+                    </span>
+                    <span class="time-date">
+                        {{flight.flightTime}}
+                    </span>
                 </div>
             </div>
             <div class="col-4 duration">
-                duration
+                {{flight.duration}}
             </div>
             <div class="col-3 destination-grid">
-                <div class="row destination-name">
-                    {{destination}}
-                </div>
-                <div class="row destination-time">
-                    time
+                <div class="row destination-text">
+                    {{flight.destination}}
                 </div>
             </div>
             <div class="col-1">

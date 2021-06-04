@@ -7,17 +7,41 @@
 
 .flight-row {
     border-top: cadetblue dashed 1px;
-    margin: 3px 0px;
+    padding: 1% 2%;
 }
 
 .body{
+    .no-flights{
+        padding: 1% 35%;
+        margin: 0 auto;
+        font-size: 22px;
+        color: #2d1819;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px 0 rgb(211 209 238 / 50%);
+        background-color: #F8F8FF;
+    }
     .flight-row{
+        .flight-logo{
+            padding: 9px;
+            img{
+                height: 45px;
+                width: 45px;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px 0 rgb(211 209 238 / 50%);
+                background-color: #F8F8FF;
+            }
+        }
         .origin-grid{
             .origin-text{
                 font-size: 18px;
+                font-weight: 400;
             }
-            .origin-time{
+            .origin-time-date{
                 font-size: 14px;
+                color: gray;
+                .time-date{
+                    padding: 0;
+                }
             }
         }
         .duration{
@@ -26,9 +50,7 @@
         .destination-grid{
             .destination-text{
                 font-size: 18px;
-            }
-            .destination-time{
-                font-size: 14px;
+                font-weight: 400;
             }
         }
     }

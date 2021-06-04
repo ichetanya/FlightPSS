@@ -1,7 +1,66 @@
-.header-box{
-    height: 8%
+:host ::ng-deep {
+    .header-box{
+        height: 8%;
+        font-size: 20px;
+        margin: 10px 0;
+    }
+    
+    .gender-field{
+        padding-top: 18px;
+        display: inline-block;
+    }
+    .co-passenger-label{
+        padding: 18px;
+        width: 100px;
+        font-weight: 200;
+    }
+    
+    .booking-container{
+        .booking-form{
+            .primary-passenger-container{
+                .passenger-heading{
+                    font-size: 16px;
+                    font-weight: bolder;
+                    margin-bottom: 12px;
+                }
+                padding: 1% 2%;
+                font-size: 16px;
+                box-shadow: 0 2px 5px 0 rgba(211,209,238,0.5);
+                background-color: #F8F8FF;
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+            .copassengers-container{
+                margin-top: 2px;
+                font-size: 14px;
+                margin: 10px auto;
+                width: 100%;
+                padding: 1% 2%;
+                box-shadow: 0 2px 5px 0 rgba(211,209,238,0.5);
+                background-color: #F8F8FF;
+                border-radius: 8px;
+                .copassenger-heading{
+                    font-size: 16px;
+                    font-weight: bolder;
+                    margin-bottom: 12px;
+                }
+                .copassenger-field{
+                    margin: 2px 6px;
+                    .copassenger-label{
+                        padding-top: 15px;
+                        font-weight: 300;
+                    }
+                }
+                
+            }
+        }
+    }
+    .mat-radio-label-content{
+        padding-right: 12px;
+    }
+    .book-button{
+        float: right;
+        float: right;
+    }
 }
 
-.booking-contain{
-    height: calc(100vh - 145px);
-}

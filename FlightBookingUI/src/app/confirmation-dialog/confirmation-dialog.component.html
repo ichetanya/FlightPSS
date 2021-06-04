@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Please Confirm</h2>
+
+<mat-dialog-content>
+
+<p> Are you sure you want to delete booking <span class="highlight-info">{{id}}</span>  from
+    <span class="highlight-info">{{origin}}</span> to <span class="highlight-info">{{destination}}</span>.
+</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" color="accent" (click)="confirm()">Yes, I'm sure.</button>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

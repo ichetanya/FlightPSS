@@ -1,0 +1,94 @@
+<div class="booking-record" *ngIf="!noBooking">
+    <div class="booking-details row"> 
+        <div class="flight-details col-6">
+            <div class="row">
+                <span class="col flight-field">Airline</span>
+                <span class="col flight-value">{{bookingDetails.flightInfo.airlineInfo.airlineName}}</span>
+            </div>
+            <div class="row">
+                <span class="col flight-field">Flight Number</span>
+                <span class="col flight-value">{{bookingDetails.flightInfo.flightNumber}}</span>
+            </div>
+            <div class="row">
+                <span class="col flight-field">Booking ID </span>
+                <span class="col flight-value">{{bookingDetails.bookingId}}</span> 
+            </div>
+            <div class="row">
+                <span class="col flight-field">Booking Date</span>
+                <span class="col flight-value">{{bookingDetails.bookingDate}}</span>
+            </div>
+            <div class="row">
+                <span class="col flight-field">Status</span>
+                <span class="col flight-value">{{bookingDetails.status}}</span>
+            </div>
+        </div>
+        <div class="journey-details col-6">
+            <div class="row">
+                <span class="col flight-field">Origin</span>
+                <span class="col flight-value">{{bookingDetails.origin}}</span>
+            </div>
+            <div class="row">
+                <span class="col flight-field">Destination</span>
+                <span class="col flight-value">{{bookingDetails.destination}}</span>
+            </div>
+            <div class="row">
+                <span class="col flight-field">Flight Date</span>
+                <span class="col flight-value">{{bookingDetails.flightDate}}</span>
+            </div>
+            <div class="row">
+                <span class="col flight-field">Flight Time</span>
+                <span class="col flight-value">{{bookingDetails.flightTime}}</span>
+            </div>
+            <div class="row cancel-checkin" *ngIf="canDelete">
+                <div class="action-btn" >
+                    <button mat-raised-button color="accent" (click)="checkin()">Check In</button>
+                </div>
+                <div class="action-btn" *ngIf="canDelete">
+                    <button mat-raised-button color="accent" (click)="deleteBooking()">Cancel Booking</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="primary-passenger-card">
+            <div class="primary-passenger-header">
+                Primary Passenger
+            </div>
+            <div class="primary-passsenger-body">
+                <div class="row">
+                 <span class="col-2 primary-passsenger-field">Name :</span>
+                 <span class="col-10 primary-passsenger-value">{{bookingDetails.passenger.firstName | uppercase}} {{bookingDetails.passenger.lastName | uppercase}}</span>
+                </div>
+                <div class="row">
+                    <span class="col-2 primary-passsenger-field"> Gender :</span>
+                    <span class="col-10 primary-passsenger-value">{{bookingDetails.passenger.gender | uppercase}}</span>
+                </div>
+                <div class="row">
+                    <span class="col-2 primary-passsenger-field"> Email :</span>
+                    <span class="col-10 primary-passsenger-value">{{bookingDetails.passenger.emailAddress}}</span>
+                </div>
+                <div class="row">
+                    <span class="col-2 primary-passsenger-field"> Contact No :</span>
+                    <span class="col-10 primary-passsenger-value">{{bookingDetails.passenger.mobileNumber}}</span>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="bookingDetails.passenger.coPassengers.length">
+            <div *ngFor="let passenger of bookingDetails.passenger.coPassengers" class="copassenger-card row" >
+                <div class="col-3 copassenger-heading">
+                    Co-Passenger 1
+                </div>
+                <div class="col-8 copassenger-details">
+                    {{passenger.firstName | uppercase}}  {{passenger.lastName | uppercase}}  <span class="copassenger-gender"> {{passenger.gender | uppercase}} </span>
+                </div>
+                <!-- <div class="passenger-delete col-1" *ngIf="canDelete">
+                    <mat-checkbox [value]="passenger.copassengerId" (change)="onChange($event)">Remove</mat-checkbox>
+                </div> -->
+            </div>
+        </div>
+
+    </div>
+    <!-- <button *ngIf="canDelete" mat-raised-button color="accent" (click)="deleteCopassengers()" [disabled]="!isCopassengerSelected">Cancel Booking for co-passengers</button> -->
+</div>
+<div *ngIf="noBooking" class="no-booking-found">
+NO BOOKING FOUND!!
+</div>

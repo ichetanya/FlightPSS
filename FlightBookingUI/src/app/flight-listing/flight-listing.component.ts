@@ -12,17 +12,17 @@ export class FlightListingComponent implements OnInit {
 
   origin: string;
   destination: string;
-  noOfPassengers: number;
+  travellers: number;
   flightDate : Date;
   displayedColumns: string[] = ['airline', 'origin', 'duration', 'fare'];
 
   dataSource =  [
-    {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
-    {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
-    {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
-    {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
-    {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
-    {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
+    // {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
+    // {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
+    // {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
+    // {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
+    // {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
+    // {airline: 1, origin: 'Hydrogen', duration: 1.0079, fare: 'H'},
   ];
   
 
@@ -30,27 +30,32 @@ export class FlightListingComponent implements OnInit {
     private location: Location, private bookingService: BookingService) { }
 
   ngOnInit(): void {
-      this.route.queryParams.subscribe(params => {
-          this.origin = params["origin"];
-          this.destination = params["destination"];
-          // this.noOfPassengers = params["noOfPassengers"];
-          this.flightDate = params["flightDate"];
-      });
-      this.bookingService.searchFlightOnGivenDate(this.origin,this.destination,2,this.flightDate).subscribe((data)=>{
-        this.dataSource = data;
-      })
+      let obj = this.bookingService.getSearcObject();
+      if(obj.flightNumber){
+        this.bookingService.searchFlightWithFlightNumber(obj.origin,obj.destination,obj.flightDate,obj.travellers,obj.flightNumber).subscribe((data)=>{
+          this.dataSource.push(data);
+          this.travellers = obj.travellers;
+        });
+      } else {
+        this.bookingService.searchFlightOnGivenDate(obj.origin,obj.destination,obj.flightDate,obj.travellers).subscribe((data)=>{
+          console.log(obj.origin,obj.destination,obj.flightDate,obj.travellers)
+          this.travellers = obj.travellers;
+          this.dataSource = data;
+        });
+      }    
   }
 
-  book(): void{
+  book(flight): void{
+    console.log(flight);
+    
     const booking = {
-      noOfPassengers : 2,
-      origin : 'Delhi',
-      startTime: '',
-      duration : '2 hours 59 Minutes',
-      destination : 'Chennai',
-      endTime: '',
-      fare:'',
-      passengerId:12
+      travellers : this.travellers,
+      origin : flight.origin,
+      flightTime: flight.flightTime,
+      duration : flight.duration,
+      destination : flight.destination,
+      fare: flight.fare,
+      id: flight.id
     }
     const navigationExtras: NavigationExtras = {
       queryParams : booking

@@ -52,6 +52,12 @@ public class CoPassenger {
 		this.lastName = lastName;
 		this.gender = gender;
 	}
+
+	public CoPassenger() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 
 }

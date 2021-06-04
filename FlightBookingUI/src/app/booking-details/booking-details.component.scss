@@ -1,0 +1,86 @@
+.booking-record{
+    margin: 1%;
+    padding: 1% 1%;
+    .booking-details{
+        // border: dashed 1px gray;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px 0 rgba(211,209,238,0.5);
+            background-color: #F8F8FF;
+        .flight-details{
+            padding: 1% 3%;
+        }
+        .journey-details{      
+            padding: 1%;      
+            .cancel-checkin{
+                display: flex;
+                margin: 7px 0px;
+                .action-btn{
+                    width: fit-content;
+                }
+            }
+        }
+        .flight-field{
+            font-size: 16px;
+            font-weight: 300;
+        }
+        .flight-value{
+            font-size: 17px;
+            font-weight: 400;
+            color: #2d1819 ;
+        }
+
+        .primary-passenger-card{
+            // border: dashed 1px gray;
+            padding: 1% 4%;
+            margin: 10px auto;
+            width: 97%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px 0 rgba(211,209,238,0.5);
+            background-color: #ffffff;
+            .primary-passenger-header{
+                font-size: 17px;
+                font-weight: 600;
+            }
+            .primary-passenger-body{
+                .primary-passsenger-field{
+                    font-size: 15px;
+                    font-weight: 300;
+                }
+                .primary-passsenger-value{
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: #2d1819 ;
+                }
+            }
+        }
+        .copassenger-card{
+            margin: 10px auto;
+            width: 98%;
+            padding: 1% 4%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px 0 rgba(211,209,238,0.5);
+            background-color: #ffffff;
+            .copassenger-heading{
+                font-size: 16px;
+                font-weight: 600;
+            }
+            .copassenger-details{
+                font-size: 15px;
+                .copassenger-gender{
+                    margin-left: 10px;
+                    color: gray;
+                }
+            }
+        }
+    }
+    
+}
+.no-booking-found{
+    padding: 2% 35%;
+    margin: 3% auto;
+    font-size: 22px;
+    color:  #2d1819;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgba(211,209,238,0.5);
+    background-color: #F8F8FF;
+}

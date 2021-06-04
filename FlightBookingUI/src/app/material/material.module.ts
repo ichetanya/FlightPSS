@@ -7,6 +7,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -18,7 +23,12 @@ import {MatIconModule} from '@angular/material/icon';
     MatNativeDateModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatDialogModule 
   ],
   exports: [
     MatSelectModule,
@@ -27,7 +37,12 @@ import {MatIconModule} from '@angular/material/icon';
     MatNativeDateModule,
     MatButtonModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatDialogModule 
   ]
 })
 export class MaterialModule { }

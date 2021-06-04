@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -23,7 +24,7 @@ public class Passenger {
 	private String gender;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinTable(name="copassengers",
 	joinColumns = {@JoinColumn(name="passengerId")},
 	inverseJoinColumns = {@JoinColumn(name="copassengerId")})
@@ -96,5 +97,11 @@ public class Passenger {
 		this.coPassengers = coPassengers;
 	}
 
+	public Passenger() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
 	
 }

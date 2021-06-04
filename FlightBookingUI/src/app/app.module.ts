@@ -11,13 +11,21 @@ import { BookingService } from './services/booking.service';
 import { BookingComponent } from './booking/booking.component';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { BookingDetailsComponent } from './booking-details/booking-details.component';
+import { CheckinComponent } from './checkin/checkin.component';
+import { BookingSearchComponent } from './booking-search/booking-search.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchFlightComponent,
     FlightListingComponent,
-    BookingComponent
+    BookingComponent,
+    BookingDetailsComponent,
+    CheckinComponent,
+    BookingSearchComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     BookingService,
     HttpClient,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialogComponent]
 })
 export class AppModule { }

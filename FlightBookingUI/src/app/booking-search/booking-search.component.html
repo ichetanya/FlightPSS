@@ -1,0 +1,16 @@
+<div class="booking-box">
+    <div class="booking-header">
+        Get Booking Details
+    </div>
+    <div class="" [formGroup]="bookingIdForm">
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Enter Booking Id :</mat-label>
+                <input matInput type="text" autocomplete="off" formControlName="bookingId">
+            </mat-form-field>  
+        </div>
+        <div>
+            <button mat-raised-button color="accent" [disabled]="bookingIdForm.invalid" (click)="search()">Search</button>
+        </div>
+    </div>
+</div>
