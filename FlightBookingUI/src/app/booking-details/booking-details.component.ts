@@ -28,9 +28,9 @@ export class BookingDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.selectedCopassengers = this.formBuilder.group({
-      id: this.formBuilder.array([])
-    });
+    // this.selectedCopassengers = this.formBuilder.group({
+    //   id: this.formBuilder.array([])
+    // });
     const id = this.route.snapshot.paramMap.get('id');
     if(id){
       this.canEdit = true;

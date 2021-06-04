@@ -37,8 +37,8 @@ export class BookingComponent implements OnInit {
   this.bookingForm = this.formBuilder.group({
     firstName : ['',Validators.required],
     lastName: ['',Validators.required],
-    gender:['',Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
-    emailAddress:[null,Validators.required,Validators.pattern("[0-9 ]{12}")],
+    gender:['',Validators.required],
+    emailAddress:[null,Validators.required],
     mobileNumber:[null,Validators.required],
     coPassengers: this.formBuilder.array([])
     });
