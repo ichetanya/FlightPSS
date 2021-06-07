@@ -18,19 +18,15 @@
           {{errorMessage}}
         </div>
         <div class="checked-in" *ngIf="checkinDetails">
-            <table class="table table-striped">
+            <table class="table table-borderless">
                 <thead>
                   <tr>
                     <th scope="col">Check-in ID</th>
                     <th scope="col">Check-in Time</th>
-                    <th scope="col">AirlineName</th>
+                    <th scope="col">Airline</th>
                     <th scope="col">Flight no.</th>
                     <th scope="col">Seat number</th>
-                    <th scope="col">Booking Id</th>
-                    <th scope="col">Origin</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Flight Date</th>
-                    <th scope="col">Flight Time</th>
+                    <th scope="col">No. of Passengers</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,14 +36,28 @@
                     <td>{{checkinDetails.bookingRecord.flightInfo.airlineInfo.airlineName}}</td>
                     <td>{{checkinDetails.bookingRecord.flightInfo.flightNumber}}</td>
                     <td>{{checkinDetails.seatNumber}}</td>
-                    <td>{{checkinDetails.bookingRecord.bookingId}}</td>
+                    <td>{{checkinDetails.bookingRecord.travellers}}</td>
+                  </tr>
+                </tbody>
+                <thead>
+                  <tr>
+                    <th scope="col">Booking Id</th>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Flight Date</th>
+                    <th scope="col">Flight Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">{{checkinDetails.bookingRecord.bookingId}}</td>
                     <td>{{checkinDetails.bookingRecord.origin}}</td>
                     <td>{{checkinDetails.bookingRecord.destination}}</td>
                     <td>{{checkinDetails.bookingRecord.flightDate}}</td>
                     <td>{{checkinDetails.bookingRecord.flightTime}}</td>
                   </tr>
                 </tbody>
-              </table>       
+              </table>          
         </div>
     </div>
 </div>
