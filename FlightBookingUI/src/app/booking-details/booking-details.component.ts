@@ -18,7 +18,6 @@ export class BookingDetailsComponent implements OnInit {
   selectedCopassengers: FormGroup;
   isCopassengerSelected: boolean;
   bookingDetails: any;
-  noBooking: boolean;
   constructor(
     private bookingService: BookingService,
     private route: ActivatedRoute,
@@ -31,21 +30,14 @@ export class BookingDetailsComponent implements OnInit {
     // this.selectedCopassengers = this.formBuilder.group({
     //   id: this.formBuilder.array([])
     // });
+    this.bookingDetails = this.bookingService.getBookingRecord();
     const id = this.route.snapshot.paramMap.get('id');
     if(id){
       this.canEdit = true;
-      this.bookingService.getBookingData(id).subscribe(data => {
-        if(!data){
-          this.noBooking = true;
-        }
-        this.bookingDetails = data;
-        if(this.bookingDetails.status != "CHECKED IN"){
-          this.canDelete = true;
-        }
-      }); 
-    } else {
-      this.bookingDetails = this.bookingService.getBookingRecord();
-    }
+      if(this.bookingDetails.status != "CHECKED IN"){
+        this.canDelete = true;
+      }
+    } 
 
   }
 

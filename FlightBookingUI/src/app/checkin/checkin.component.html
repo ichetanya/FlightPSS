@@ -14,7 +14,10 @@
                 <button mat-raised-button color="accent" [disabled]="checkinForm.invalid" (click)="checkIn()">Check In</button>
             </div>
         </div>
-        <div class="checked-in" *ngIf="isCheckedIn">
+        <div *ngIf="isAlreadyCheckedIn" class="already-checkin">
+          {{errorMessage}}
+        </div>
+        <div class="checked-in" *ngIf="checkinDetails">
             <table class="table table-striped">
                 <thead>
                   <tr>
@@ -45,9 +48,6 @@
                   </tr>
                 </tbody>
               </table>       
-        </div>
-        <div *ngIf="isAlreadyCheckedIn" class="already-checkin">
-          {{errorMessage}}
         </div>
     </div>
 </div>

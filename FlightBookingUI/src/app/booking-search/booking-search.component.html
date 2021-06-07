@@ -13,4 +13,7 @@
             <button mat-raised-button color="accent" [disabled]="bookingIdForm.invalid" (click)="search()">Search</button>
         </div>
     </div>
+    <div *ngIf="noBooking" class="no-booking-found">
+        NO BOOKING FOUND!!
+    </div>
 </div>

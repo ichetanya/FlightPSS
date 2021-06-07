@@ -2,6 +2,7 @@ package com.example.pss.service;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,11 @@ public class CheckInServiceImpl implements CheckInService {
 	public ResponseEntity<Object> checkIn(int bookingId) {
 		if(checkindao.existsBybookingRecord_bookingId(bookingId)) {
 //			return new ResponseEntity<Object>("ALREADY CHECKED IN",HttpStatus.OK);
-			 return ResponseEntity.status(HttpStatus.CREATED).body(
-			            Collections.singletonMap("message", "ALREADY CHECKED IN"));
+			CheckIn checkin = checkindao.findBybookingRecord_bookingId(bookingId);
+			HashMap<Object, Object> map = new HashMap<>();
+	        map.put("message", "ALREADY CHECKED IN");
+	        map.put("data", checkin);
+			 return ResponseEntity.status(HttpStatus.CREATED).body(map);
 		}
 		BookingRecord br = bookingdao.findByBookingId(bookingId);
 		if(br == null) {

@@ -1,4 +1,4 @@
-<div class="booking-record" *ngIf="!noBooking">
+<div class="booking-record" >
     <div class="booking-details row"> 
         <div class="flight-details col-6">
             <div class="row">
@@ -21,6 +21,10 @@
                 <span class="col flight-field">Status</span>
                 <span class="col flight-value">{{bookingDetails.status}}</span>
             </div>
+            <div class="row">
+                <span class="col flight-field">No. of passengers</span>
+                <span class="col flight-value">{{bookingDetails.travellers}}</span>
+            </div>
         </div>
         <div class="journey-details col-6">
             <div class="row">
@@ -38,6 +42,10 @@
             <div class="row">
                 <span class="col flight-field">Flight Time</span>
                 <span class="col flight-value">{{bookingDetails.flightTime}}</span>
+            </div>
+            <div class="row">
+                <span class="col flight-field">Total Fare</span>
+                <span class="col flight-value">{{bookingDetails.fare * bookingDetails.travellers |currency:"INR":"symbol"}}</span>
             </div>
             <div class="row cancel-checkin" *ngIf="canDelete">
                 <div class="action-btn" >
@@ -88,7 +96,4 @@
 
     </div>
     <!-- <button *ngIf="canDelete" mat-raised-button color="accent" (click)="deleteCopassengers()" [disabled]="!isCopassengerSelected">Cancel Booking for co-passengers</button> -->
-</div>
-<div *ngIf="noBooking" class="no-booking-found">
-NO BOOKING FOUND!!
 </div>

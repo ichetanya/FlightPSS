@@ -36,9 +36,11 @@ export class CheckinComponent implements OnInit {
      
      if(data.message == "ALREADY CHECKED IN"){
        this.isAlreadyCheckedIn = true
+       this.checkinDetails = data.data;
        this.errorMessage = 'You have already checked-in !!';
      } else  if(data.message === "NO BOOKING EXIST"){
       this.isAlreadyCheckedIn = true
+      this.checkinDetails = null;
       this.errorMessage = 'Invalid booking id !!';
     } else{
      this.checkinDetails = data;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BookingService } from '../services/booking.service';
 
 @Component({
   selector: 'app-booking-search',
@@ -10,9 +11,11 @@ import { Router } from '@angular/router';
 export class BookingSearchComponent implements OnInit {
 
   bookingIdForm: FormGroup;
+  noBooking: boolean;
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private bookingService: BookingService
   ) { }
 
   ngOnInit(): void {
@@ -23,8 +26,15 @@ export class BookingSearchComponent implements OnInit {
 
   search(){
   const id = this.bookingIdForm.controls['bookingId'].value;
-  console.log(id);
-  this.router.navigate(['/booking-details',id]);
+  this.bookingService.getBookingData(id).subscribe(data => {
+    let bookingDetails = data;
+    this.bookingService.setBookingRecord(bookingDetails);
+    if(!data){
+      this.noBooking = true;
+    }else{
+      this.router.navigate(['/booking-details',id]);
+    }
+  }); 
   }
 
 }

@@ -1,3 +1,14 @@
 nav{
     padding: 5px 20px;
+    background-color: #B4E9DE;
+    border-radius: 8px;
+    a{
+       &:active{
+        font-weight: 600;
+       }
+
+    }
+    .brand-logo{
+        height: 40px;
+    }
 }

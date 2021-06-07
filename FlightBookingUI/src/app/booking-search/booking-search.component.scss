@@ -3,7 +3,7 @@
     padding: 3%;
     border-radius: 8px;
     box-shadow: 0 2px 5px 0 rgba(211,209,238,0.5);
-    background-color: #F8F8FF;
+    background-color: #ffffff;
     .booking-header{
         font-size: 20px;
         font-weight: 400;
@@ -14,5 +14,14 @@
         margin: 3% auto;
         font-size: 22px;
         color:  #A9A9A9;
+    }
+    .no-booking-found{
+        padding: 2% 35%;
+        margin: 3% auto;
+        font-size: 22px;
+        color:  #2d1819;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px 0 rgba(211,209,238,0.5);
+        background-color:  #B4E9DE;;
     }
 }
